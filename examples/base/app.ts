@@ -4,100 +4,99 @@ import axios from '../../src/index'
 //   method: 'get',
 //   url: '/base/get',
 //   params: {
-//     foo: ['bar', 'baz']
-//   }
+//     foo: ['bar', 'baz'],
+//   },
 // })
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get',
 //   params: {
 //     foo: {
-//       bar: 'baz'
-//     }
-//   }
+//       bar: 'baz',
+//     },
+//   },
 // })
-//
+
 // const date = new Date()
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get',
 //   params: {
-//     date
-//   }
+//     date,
+//   },
 // })
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get',
 //   params: {
-//     foo: '@:$, '
-//   }
+//     foo: '@:$, ',
+//   },
 // })
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get',
 //   params: {
 //     foo: 'bar',
-//     baz: null
-//   }
+//     baz: null,
+//   },
 // })
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get#hash',
 //   params: {
-//     foo: 'bar'
-//   }
+//     foo: 'bar',
+//   },
 // })
-//
+
 // axios({
 //   method: 'get',
 //   url: '/base/get?foo=bar',
 //   params: {
-//     bar: 'baz'
-//   }
+//     bar: 'baz',
+//   },
 // })
-//
+// //
 // axios({
 //   method: 'post',
 //   url: '/base/post',
 //   data: {
 //     a: 1,
-//     b: 2
-//   }
+//     b: 2,
+//   },
 // })
-//
+
 // axios({
 //   method: 'post',
 //   url: '/base/post',
 //   headers: {
-//     'content-type': 'application/json;charset=utf-8'
+//     'content-type': 'application/json;charset=utf-8',
 //   },
 //   data: {
 //     a: 1,
-//     b: 2
-//   }
+//     b: 2,
+//   },
 // })
-//
+
 // const arr = new Int32Array([21, 31])
-//
+
 // axios({
 //   method: 'post',
 //   url: '/base/buffer',
-//   data: arr
+//   data: arr,
 // })
-//
-//
+
 // const paramsString = 'q=URLUtils.searchParams&topic=api'
 // const searchParams = new URLSearchParams(paramsString)
-//
+
 // axios({
 //   method: 'post',
 //   url: '/base/post',
-//   data: searchParams
+//   data: searchParams,
 // })
 
 axios({
@@ -105,8 +104,8 @@ axios({
   url: '/base/post',
   data: {
     a: 1,
-    b: 2
-  }
+    b: 2,
+  },
 }).then((res) => {
   console.log(res)
 })
@@ -117,8 +116,8 @@ axios({
   responseType: 'json',
   data: {
     a: 3,
-    b: 4
-  }
+    b: 4,
+  },
 }).then((res) => {
   console.log(res)
 })
