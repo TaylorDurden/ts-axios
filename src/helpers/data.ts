@@ -7,3 +7,14 @@ export function transformRequest(data: any): any {
 
   return data
 }
+
+export function transformResponseData(data: any): any {
+  if (typeof data === 'string') {
+    try {
+      data = JSON.parse(data)
+    } catch (error) {
+      // do nothing
+    }
+  }
+  return data
+}
