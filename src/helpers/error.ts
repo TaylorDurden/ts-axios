@@ -10,7 +10,7 @@ export class AxiosError extends Error {
   constructor(
     message: string,
     config: AxiosRequestConfig,
-    code?: string,
+    code?: string | null,
     request?: any,
     response?: AxiosResponse
   ) {
@@ -29,7 +29,7 @@ export class AxiosError extends Error {
 export function createError(
   message: string,
   config: AxiosRequestConfig,
-  code?: string,
+  code?: string | null,
   request?: any,
   response?: AxiosResponse
 ) {
