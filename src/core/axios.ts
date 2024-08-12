@@ -34,7 +34,7 @@ export default class Axios {
     return this._requestMethodWithData('patch', url, data, config)
   }
 
-  _requestMethodWithoutData(method: Method, url: string, config?: AxiosRequestConfig) {
+  private _requestMethodWithoutData(method: Method, url: string, config?: AxiosRequestConfig) {
     return this.request(
       Object.assign(config || {}, {
         method,
@@ -43,7 +43,12 @@ export default class Axios {
     )
   }
 
-  _requestMethodWithData(method: Method, url: string, data?: any, config?: AxiosRequestConfig) {
+  private _requestMethodWithData(
+    method: Method,
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ) {
     return this.request(
       Object.assign(config || {}, {
         method,
