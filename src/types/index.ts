@@ -59,6 +59,12 @@ export interface Axios {
 }
 
 export interface AxiosInstance extends Axios {
+  /*
+    expected to call as `({method: 'get', url: '/api/data'})`
+  */
   <T = any>(config: AxiosRequestConfig): AxiosPromise<T>
+  /*
+    expected to call as `('/api/data', {method: 'get'})`
+  */
   <T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
 }

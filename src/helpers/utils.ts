@@ -22,6 +22,8 @@ export function isPlainObject(val: any): val is Object {
  */
 export function extend<T, U>(to: T, from: U): T & U {
   // Iterate over the properties of the `from` object
+  console.log(`to: ${to}`)
+
   for (const key in from) {
     // Add the property to the `to` object, casting the value to `any` to avoid type errors
     ;(to as T & U)[key] = from[key] as any
