@@ -8,6 +8,7 @@ import {
 } from '../types'
 import dispatchRequest from './dispatchRequest'
 import InterceptorManager from './interceptorManager'
+import mergeConfig from './mergeConfig'
 
 // request interceptor 2 => request interceptor 1 => send request => response interceptor 1 => response interceptor 2
 interface Interceptors {
@@ -21,9 +22,11 @@ interface PromiseChain<T> {
 }
 
 export default class Axios {
+  defaults: AxiosRequestConfig
   interceptors: Interceptors
 
-  constructor() {
+  constructor(initConfig: AxiosRequestConfig) {
+    this.defaults = initConfig
     this.interceptors = {
       request: new InterceptorManager<AxiosRequestConfig>(),
       response: new InterceptorManager<AxiosResponse>()
@@ -41,6 +44,9 @@ export default class Axios {
       // e.g.: request(config) was called, config is url arg
       config = url
     }
+
+    config = mergeConfig(this.defaults, config)
+
     const chain: PromiseChain<any>[] = [
       {
         resolved: dispatchRequest,
@@ -48,7 +54,7 @@ export default class Axios {
       }
     ]
 
-    // the request interceptors will insert into chain before the initial dispatchRequest
+    // the request interceptors will insert into chain before the initial dispatchRequest in line 44
     this.interceptors.request.forEach(interceptor => {
       chain.unshift(interceptor)
     })

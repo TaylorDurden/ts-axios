@@ -22,12 +22,33 @@ export function isPlainObject(val: any): val is Object {
  */
 export function extend<T, U>(to: T, from: U): T & U {
   // Iterate over the properties of the `from` object
-  console.log(`to: ${to}`)
-
   for (const key in from) {
     // Add the property to the `to` object, casting the value to `any` to avoid type errors
     ;(to as T & U)[key] = from[key] as any
   }
   // Return the extended object, casting it to the intersection type `T & U`
   return to as T & U
+}
+
+export function deepMerge(...objs: any[]): any {
+  const result = Object.create(null)
+
+  objs.forEach(obj => {
+    if (obj) {
+      Object.keys(obj).forEach(key => {
+        const val = obj[key]
+        if (isPlainObject(val)) {
+          if (isPlainObject(result[key])) {
+            result[key] = deepMerge(result[key], val)
+          } else {
+            result[key] = deepMerge(val)
+          }
+        } else {
+          result[key] = val
+        }
+      })
+    }
+  })
+
+  return result
 }
